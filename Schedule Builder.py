@@ -2,9 +2,8 @@ import random
 import copy
 
 def main():
-    MasterStaff = ["Lisa","Andy","Simone","Jarret","Alyssa","Matt","James","Laura","Julia","Devon"]
-    MasterLifeguard = ["Lisa","Andy","Jarret"]
-    MasterBelayer = ["Lisa","Alyssa","Laura","James","Devon"]
+    MasterStaff,MasterLifeguard,MasterBelayer = load_Staff()
+    
     # 1 [[WF],[CW],[CS],[CR],[NA],[AR]]
     # 2 [[  ],[  ],[  ],[  ],[  ],[  ]]
     # 3 [[  ],[  ],[  ],[  ],[  ],[  ]]
@@ -84,6 +83,26 @@ def print_Schedule(schedule):
         print("Archery: " + str(schedule[i][5]))
         print("\n")
         i=i+1
-
+        
+def load_Staff():
+    staffFile= open("staff.txt","r")
+    staff = []
+    for line in staffFile:
+        staff.append(line.strip())
+    staffFile.close()
+    
+    lifeguardFile = open("lifeguard.txt","r")
+    lifeguard = []
+    for line in lifeguardFile:
+        lifeguard.append(line.strip())
+    lifeguardFile.close()
+    
+    belayerFile = open("belayer.txt","r")
+    belayer = []
+    for line in belayerFile:
+        belayer.append(line.strip())
+    belayerFile.close()
+    
+    return staff, lifeguard, belayer
 
 main()
